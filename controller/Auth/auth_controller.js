@@ -5,7 +5,6 @@ const OTPModel = require('../../models/otp_model')
 const { checkPassword, newToken } = require('../../utils/utility.function')
 const Student = require('../../models/student_model')
 const crypto = require('crypto');
-const bcrypt = require('bcryptjs');
 
 
 
