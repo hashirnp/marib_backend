@@ -1,9 +1,7 @@
 const User = require('../../models/user_model')
 // const errorHandler = require('../middleware/errorHandler')
 const { sendResponseError } = require('../../middleware/auth_middileware')
-const { sendMessege } = require('./sms_controller')
 const OTPModel = require('../../models/otp_model')
-const { sendSMS } = require('../Auth/new_sms')
 const { checkPassword, newToken } = require('../../utils/utility.function')
 const Student = require('../../models/student_model')
 const crypto = require('crypto');
