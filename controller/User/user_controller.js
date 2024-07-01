@@ -82,7 +82,7 @@ const getComplaint = async (req, res) => {
     // let data=
     try {
         let query = (req.query);
-        let data = await Complaint.find(query).populate('studentID',);
+        let data = await Complaint.find(query).populate('studentId',);
         res.json({ data: data, length: data.length })
     } catch (error) {
         res.status(400).send({ messege: error })
@@ -96,7 +96,7 @@ const deleteComplaint = async (req, res) => {
     try {
         let query = (req.query);
         let id = query['id'];
-        let studentID = query['studentID'];
+        let studentID = query['studentId'];
         await Complaint.deleteOne({ '_id': id })
         let data = await Complaint.find({ studentId: studentID });
         res.json({ data: data, length: data.length })
