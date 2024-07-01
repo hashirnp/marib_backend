@@ -27,13 +27,22 @@ const getStudents = async (req, res) => {
 const addAttendance = async (req, res) => {
 
     const attendances = req.body; // Extract the list of attendance from the request body
+    console.log(attendances)
     let newError;
 
     // Insert multiple attendance records into the database
     for (const attendance of attendances) {
         try {
             if (await Attendance.findOne({ studentId: attendance['studentId']['_id'], date: attendance['date'] })) {
-                await Attendance.updateOne({ studentId: attendance['studentId']['_id'], date: attendance['date'] }, attendance)
+                await Attendance.updateOne({ studentId: attendance['studentId']['_id'], date: attendance['date'] }, {
+                    date: attendance['date'],
+                    present: attendance['present'],
+                    verified: attendance['verified'],
+                    studentId: attendance['studentId']['_id'],
+                    studentClass: attendance['studentClass'],
+                    month: attendance['month'],
+                    timestamp: attendance['timestamp'],
+                })
             } else {
                 await Attendance.create(attendance)
             }
